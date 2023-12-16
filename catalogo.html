@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Sitio de libros">
-    <meta name="author" content="Emilia Hassan">
+    <meta name="author" content="Emilia Hassan, Federico Farola, Gustavo Recalde, Sebastian Canosa">
     <meta name="keywords" content="Libros, comics">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EL Faro</title>
@@ -17,64 +16,25 @@
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./css/style_1.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"><img src="./img/logo_index.jpg" alt="Logo_El_Faro"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="novedades.html">NOVEDADES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="terror.html">TERROR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="comics.html">COMICS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="c_ficcion.html">CIENCIA FICCIÓN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">CONTACTO</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <span class="name navbar-brand border-top border-bottom border-dark">EL FARO</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div id="navbar-container"></div>
+        <form class="d-flex" id="search-form">
+            <input class="form-control me-2 d-flex flex-fill" type="search" placeholder="Buscar" aria-label="Search" id="search-input">
+            <button class="btn btn-outline-success flex-shrink-0" type="submit">Buscar</button>
+        </form>
     </header>
 
     <main>
-        <div class="cuerpo p-4">
-            <p class="efect">EL FARO - TERROR Y SUSPENSO</p>
-        </div>
-        <br>
         <div class="container-fluid border bg-light p-5">
-            <h3 class="text-black text-center py-2">
-                En "El Faro", encontrarás los mejores libros del género del suspenso y terror, desde clásicos hasta lo
-                más reciente. <br> Nos esforzamos por brindarte la mejor selección y calidad en cada título que
-                ofrecemos.
-            </h3>
-            <h3 class="text-danger text-center py-3">
-                Adquiere tus libros hoy y disfruta de la experiencia más aterradora.
-            </h3>
+            <h2 class="text-black text-center py-2">
+                En "El Faro", encontrarás los mejores libros del género de suspenso y terror
+            </h2>
         </div>
 
         <div id="app">
@@ -84,24 +44,15 @@
         <div v-for="libro in libros" :key="libro.id" class="col-lg-4 col-md-6 mb-4">
             <div class="card card_1">
                 <a :href="'preview_libro.html?id=' + libro.id">
-                    <img :src="libro.img" class="card-img-top img-fluid mx-auto d-block p-4 libro-img"
-                        :alt="libro.nombre">
+                    <img :src="libro.img" class="card-img-top img-fluid mx-auto d-block p-4 libro-img">
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">
                         <a :href="'preview_libro.html?id=' + libro.id">{{ libro.nombre }}</a>
                     </h5>
                     <p class="card-text">{{ libro.descripcion }}</p>
-                    <p class="card-text"><strong>Autor:</strong> {{ libro.autor }}</p>
-                    <p class="card-text"><strong>Precio:</strong> ${{ libro.precio }}</p>
-                    <p class="card-text"><strong>Genero:</strong> {{ libro.genero }}</p>
-                    <p class="card-text"><strong>Editorial:</strong> {{ libro.editorial }}</p>
-                    
+                    <p class="card-text"><strong>Autor:</strong> {{ libro.autor }}</p>               
                     <a :href="'http://' + libro.link" target="_blank" class="btn btn-primary">Comprar</a>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -114,48 +65,10 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <nav class="row justify-content-center">
-                <a href="index.html" class="col-10 col-md-4 text-reset text-uppercase d-flex align-items-center mb-3 mb-md-0">
-                    <img src="./img/logo_footer.png" alt="Logo" class="img-logo m-2">
-                    EL FARO
-                </a>
-                <ul class="col-10 col-md-4 list-unstyled">
-                    <li class="font-weight-bold text-uppercase py-2">Secciones</li>
-                    <li><a href="https://www.tematika.com/musica" target="_blank" class="text-reset">Música</a></li>
-                    <li><a href="https://www.tematika.com/peliculas" target="_blank" class="text-reset">
-                        <li><a href="https://www.tematika.com/pasatiempos" target="_blank" class="text-reset">Pasatiempos</a></li>
-                    </ul>
-    
-                    <ul class="col-10 col-md-4 list-unstyled">
-                        <li class="font-weight-bold text-uppercase p-2">Seguinos!</li>
-                        <li class="d-flex justify-content-between p-3">
-                            <a href="https://www.facebook.com/?locale=es_LA" target="_blank" class="text-reset">
-                                <i class="fab fa-facebook-f fa-lg"></i>
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" class="text-reset">
-                                <i class="fab fa-instagram fa-lg"></i>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" class="text-reset">
-                                <i class="fab fa-twitter fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-    
-            <div class="col-xs-12 col-md-6 col-lg-4">
-                <div class="mb-4 text-center">
-                    <button class="btn btn-primary" onclick="autor()">DESARROLLADOR</button>
-                </div>
-                <a href="https://api.whatsapp.com/send?phone=2901416486" class="float" target="_blank">
-                    <i class="fab fa-whatsapp my-float"></i>
-                </a>
-            </div>
-        </footer>
+    <div id="footer-container"></div>
     
         <!-- Vue.js y Bootstrap JS y Popper.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.8/dist/umd/popper.min.js"
@@ -165,6 +78,9 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"></script>
     
+            <!-- Script para manejar la búsqueda -->
+            <script src="/search.js"></script>
+
         <!-- Script para obtener los libros con Vue.js -->
         <script>
             new Vue({
@@ -173,7 +89,8 @@
                     libros: []
                 },
                 mounted() {
-                    fetch('http://localhost:5000/libros/all')
+                    //fetch('http://localhost:5000/libros/all')
+                    fetch('http://scanosa.pythonanywhere.com/libros/all')
                         .then(response => response.json())
                         .then(data => {
                             this.libros = data;
@@ -184,6 +101,10 @@
                 }
             });
         </script>
+
+        <script src="js/header.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/desarrollador.js"></script>
     </body>
     
     </html>

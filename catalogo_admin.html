@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Sitio de libros">
-    <meta name="author" content="Emilia Hassan">
+    <meta name="author" content="Emilia Hassan, Federico Farola, Gustavo Recalde, Sebastian Canosa">
     <meta name="keywords" content="Libros, comics">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EL Faro</title>
@@ -16,48 +16,15 @@
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./css/style_1.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"><img src="./img/logo_index.jpg" alt="Logo_El_Faro"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="novedades.html">NOVEDADES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="terror.html">TERROR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="comics.html">COMICS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="c_ficcion.html">CIENCIA FICCIÓN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">CONTACTO</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <span class="name navbar-brand border-top border-bottom border-dark">EL FARO</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div id="navbar-container"></div>
+
     </header>
 
     <main>
@@ -99,62 +66,16 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-start mt-3">
-                            <button onclick="goBack()" class="btn btn-primary">Volver</button>
+                            <button onclick="goBack()" class="btn btn-primary m-2">Volver</button>
+                            <button type="submit" class="btn btn-success m-2" onclick="window.location.href='alta_libro.html'">Alta Libro</button>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-    
-
-    
-        <hr class="hr-dashed" />
     </main>
-
-
-
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <nav class="row justify-content-center">
-                <a href="index.html"
-                    class="col-10 col-md-4 text-reset text-uppercase d-flex align-items-center mb-3 mb-md-0">
-                    <img src="./img/logo_footer.png" alt="Logo" class="img-logo m-2">
-                    EL FARO
-                </a>
-                <ul class="col-10 col-md-4 list-unstyled">
-                    <li class="font-weight-bold text-uppercase py-2">Secciones</li>
-                    <li><a href="https://www.tematika.com/musica" target="_blank" class="text-reset">Música</a></li>
-                    <li><a href="https://www.tematika.com/peliculas" target="_blank" class="text-reset">
-                            <li><a href="https://www.tematika.com/pasatiempos" target="_blank"
-                                    class="text-reset">Pasatiempos</a></li>
-                </ul>
-
-                <ul class="col-10 col-md-4 list-unstyled">
-                    <li class="font-weight-bold text-uppercase p-2">Seguinos!</li>
-                    <li class="d-flex justify-content-between p-3">
-                        <a href="https://www.facebook.com/?locale=es_LA" target="_blank" class="text-reset">
-                            <i class="fab fa-facebook-f fa-lg"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank" class="text-reset">
-                            <i class="fab fa-instagram fa-lg"></i>
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" class="text-reset">
-                            <i class="fab fa-twitter fa-lg"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="mb-4 text-center">
-                <button class="btn btn-primary" onclick="autor()">DESARROLLADOR</button>
-            </div>
-            <a href="https://api.whatsapp.com/send?phone=2901416486" class="float" target="_blank">
-                <i class="fab fa-whatsapp my-float"></i>
-            </a>
-        </div>
-    </footer>
+        <!-- FOOTER -->
+    <div id="footer-container"></div>
 
     <!-- Vue.js y Bootstrap JS y Popper.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -173,7 +94,8 @@
                 libros: []
             },
             mounted() {
-                fetch('http://localhost:5000/libros/all')
+               //fetch('http://localhost:5000/libros/all')
+                fetch('http://scanosa.pythonanywhere.com/libros/all')
                     .then(response => response.json())
                     .then(data => {
                         this.libros = data;
@@ -186,7 +108,8 @@
                 eliminarLibro(id) {
                     const nombreLibro = this.libros.find(libro => libro.id === id)?.nombre || 'Este libro';
                     if (confirm(`¿Estás seguro de eliminar ${nombreLibro}?`)) {
-                        fetch(`http://localhost:5000/libros/${id}`, {
+                        //fetch(`http://localhost:5000/libros/${id}`, {
+                        fetch(`http://scanosa.pythonanywhere.com/libros/${id}`, {
                             method: 'DELETE'
                         })
                             .then(response => response.json())
@@ -207,6 +130,9 @@
         window.history.back();
     }
     </script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/desarrollador.js"></script>
 </body>
 
 </html>

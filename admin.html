@@ -144,7 +144,8 @@
       },
       mounted() {
         
-        fetch('http://localhost:5000/libros/all')
+        //fetch('http://localhost:5000/libros/all')
+        fetch('http://scanosa.pythonanywhere.com/libros/all')
           .then(response => response.json())
           .then(data => {
             this.libros = data;

@@ -11,11 +11,34 @@ body {
     background-image: var(--bs-gradient-light);
 }
 
-.navbar-nav a {
-    font-size: 18px;
-    color: #000; 
+.bg-body-tertiary {
+    filter: invert(1)!important;
+    font-weight: 700;
+    padding: 20px;
 }
-
+li.d-flex.justify-content-between.p-3 {
+    justify-content: start!important;
+}
+li.d-flex.justify-content-between.p-3 > a {
+    margin: 0 8px;
+}
+.col-md-4.mb-4.text-center > a:first-of-type {
+    width: 100%;
+    padding-bottom: 2px;
+    display: block;
+}
+.col-md-4.mb-4.text-center {
+    justify-content: flex-start;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+}
+h1.efect {
+    margin-bottom: 25px;
+}
+.row.align-items-center.mt-4.justifyforzada{
+    justify-content: space-around!important;
+}
 
 .fab {
     transition: color 0.3s;/* Agrega una transición suave al cambio de color */

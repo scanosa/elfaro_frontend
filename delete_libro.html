@@ -85,7 +85,8 @@
         },
         methods: {
             obtenerLibros() {
-                fetch('http://localhost:5000/libros/all')
+                //fetch('http://localhost:5000/libros/all')
+                fetch('http://scanosa.pythonanywhere.com/libros/all')
                     .then(response => response.json())
                     .then(data => {
                         this.libros = data;
@@ -97,7 +98,8 @@
             eliminarLibro(id) {
                 const nombreLibro = this.libros.find(libro => libro.id === id)?.nombre || 'Este libro';
                 if (confirm(`¿Estás seguro de eliminar ${nombreLibro}?`)) {
-                    fetch(`http://localhost:5000/libros/${id}`, {
+                    //fetch(`http://localhost:5000/libros/${id}`, {
+                    fetch(`http://scanosa.pythonanywhere.com/libros/${id}`, {
                         method: 'DELETE'
                     })
                         .then(response => response.json())
